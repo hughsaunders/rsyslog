@@ -31,7 +31,7 @@ apt_repository "hardy-rsyslog-ppa" do
 end
 
 package "rsyslog" do
-  action :install
+  action node["osops"]["do_package_upgrades"] == true ? :upgrade : :install
 end
 
 case node['platform']
